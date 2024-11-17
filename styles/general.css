@@ -26,6 +26,10 @@
   font-weight: bold;
 }
 
+.main-navigation {
+  display: none;
+}
+
 .main-navigation ul {
   list-style-type: none;
   display: flex;
