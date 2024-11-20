@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>О нас</title>
+  <link rel="stylesheet" href="../styles/general.css">
+</head>
+
+<body>
+  <header>
+    <nav>
+      <div class="toggle-button" onclick="toggleNav()">
+        ☰
+      </div>
+      <ul>
+        <a href="../soon/ru-coming-soon.html">
+          <li>Новости</li>
+        </a>
+        <a href="../ru/about.html">
+          <li>О нас</li>
+        </a>
+        <a href="../ru/contact.html">
+          <li>Контакты</li>
+        </a>
+        <a href="../soon/ru-coming-soon.html">
+          <li>Партнеры</li>
+        </a>
+      </ul>
+    </nav>
+    <h2 class="site-title">О нас</h2>
+    <div class="language-switcher-container">
+      <select id="language-switcher" class="language-option" onchange="location = this.value;">
+        <option value="../ru/ru.html">Русский</option>
+        <option value="../kg/kg.html">Кыргызча</option>
+        <option value="../en/en.html">English</option>
+      </select>
+    </div>
+  </header>
+  
+  <script src="../scripts/general.js"></script>
+</body>
+
+</html>
