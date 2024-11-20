@@ -7,56 +7,47 @@
   <title>Башкы бет (Кыргызча)</title>
   <link rel="stylesheet" href="kg.css">
   <link rel="stylesheet" href="../styles/general.css">
-  <link rel="website logo" href="../images/kg07nurislam-logo.png">
+  <link rel="icon" href="../images/kg07nurislam-logo.png">
 </head>
 
 <body>
-  <header class="site-header">
-    <div class="container">
-      <h1 class="site-title">Башкы</h1>
-      <nav class="main-navigation">
-        <ul>
-          <li><a href="../kg/news/kg-news.html">Жаңылыктар</a></li>
-          <li><a href="about.html">Биз жөнүндө</a></li>
-          <li><a href="contact.html">Байланыш</a></li>
-        </ul>
-      </nav>
-      <div class="language-switcher-container">
-        <select id="language-switcher" class="language-option" onchange="location = this.value;">
-          <option value="../kg/kg.html">Кыргызча</option>
-          <option value="../en/en.html">English</option>
-          <option value="../ru/ru.html">Русский</option>
-        </select>
-      </div>
+  <header>
+  <nav>
+    <div class="toggle-button" onclick="toggleNav()">
+      ☰
     </div>
+    <ul>
+      <a href="../soon/kg-coming-soon.html">
+        <li>Жаңылыктар</li>
+      </a>
+      <a href="../kg/about.html">
+        <li>Биз жөнүндө</li>
+      </a>
+      <a href="../kg/contact.html">
+        <li>Байланыш</li>
+      </a>
+      <a href="../soon/kg-coming-soon.html">
+        <li>Өнөктөштөр</li>
+      </a>
+    </ul>
+  </nav>
+  <h2 class="site-title">Башкы бет</h2>
+  <div class="language-switcher-container">
+    <select id="language-switcher" class="language-option" onchange="location = this.value;">
+      <option value="../kg/kg.html">Кыргызча</option>
+      <option value="../en/en.html">English</option>
+      <option value="../ru/ru.html">Русский</option>
+    </select>
+  </div>
   </header>
-  <!-- 
-  <section class="news-section">
-    <div class="container">
-      <h6 class="section-title">Жаңылыктар</h6>
-      <div class="news-list">
-        <div class="news-item">
-          <h3>beta.kg07nurislam.com</h3>
-          <p>kg07nurislamга тиешелүү сайттардын алдын ала тесттик версияларын жарыялоочу.</p>
-          <a href="https://news.kg07nurislam
-        com/kg/beta-kg07nurislam-com.html" class="read-more">Көбүрөөк окуу ></a>
-        </div>
-        <div class="news-item">
-          <h3>info.kg07nurislam.com</h3>
-          <p>info.kg07nurislam.com - Бул туш келди(Random) кандайдыр бир нерсе тандалып алынып ал тууралуу маалыматтар берилүүчү сайт.</p>
-          <a href="https://info.kg07nurislam.com/kg/main.html" class="read-more">Көбүрөөк окуу ></a>
-        </div>
-      </div>
-    </div>
-  </section>
--->
-  <section class="">
-  </section>
+
 <!--
   <footer class="footer">
     from kg07nurislam dev
   </footer>
 -->
-</body>
 
+<script src="../scripts/general.js"></script>
+
+</body>
 </html>
