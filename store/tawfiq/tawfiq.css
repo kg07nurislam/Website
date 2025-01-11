@@ -1,0 +1,111 @@
+/* tawfiq.css */
+
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f9;
+  color: #333;
+  line-height: 1.6;
+}
+
+.top-header {
+  background-color: #4CAF50;
+  color: white;
+  text-align: left;
+  padding: 20px 10px;
+  display: flex;
+  align-items: center;
+}
+
+.top-header img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-left: 10px;
+}
+
+.top-header b {
+  font-size: 24px;
+  display: block;
+  margin-left: 15px;
+}
+
+.section {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.section h4 {
+  font-size: 20px;
+  color: #4CAF50;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #4CAF50;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+.about-text {
+  margin-bottom: 20px;
+}
+
+button {
+  display: block;
+  width: 100%;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+.contact ul {
+  padding: 0;
+  list-style: none;
+}
+
+.contact li {
+  margin-bottom: 10px;
+}
+
+.contact a {
+  text-decoration: none;
+  color: #4CAF50;
+  font-weight: bold;
+}
+
+.contact a:hover {
+  text-decoration: underline;
+}
+
+/* Респонсив дизайн */
+@media (max-width: 768px) {
+  .top-header {
+    padding: 15px 5px;
+  }
+
+  .top-header b {
+    font-size: 20px;
+  }
+
+  .section {
+    margin: 10px;
+    padding: 15px;
+  }
+
+  button {
+    font-size: 14px;
+  }
+}
