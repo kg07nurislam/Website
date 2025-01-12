@@ -176,6 +176,13 @@ body {
   background-color: #0056b3;
 }
 
+#whatsapp-btn {
+  background: #25D366;
+}
+
+#instagram-btn {
+  background: linear-gradient(to right, #F58529, #DD2A7B, #8134AF);
+}
 
 .social-media>a {
   text-decoration: none;
