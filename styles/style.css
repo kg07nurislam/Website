@@ -1,0 +1,42 @@
+.main-page-content {
+  width: 100%;
+  height: auto;
+}
+
+.content-items {
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 15px;
+}
+
+.content-item {
+  max-width: 500px;
+  margin: 15px 5%;
+  padding: 15px;
+  background: #0ab;
+  border: none; 
+  border-radius: 15px;
+  box-shadow: 0 0 15px #0ab, inset 0 0 3px #0ab;
+}
+
+.content-title {
+  display: inline-block;
+  border-bottom: 3px solid #005555;
+  margin-bottom: 15px;
+  padding-bottom: 5px;
+}
+
+.content-text {
+  font-size: 14px;
+}
+
+.content-ul {
+  padding-left: 20px;
+  list-style: none;
+  font-size: 14px;
+}
+
+.content-ul li::before{
+  content: "✓ ";
+  color: rgba(15, 255, 43, 1);
+}
