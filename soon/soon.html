@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Coming Soon</title>
+  <link rel="stylesheet" href="../styles/soon.css">
+</head>
+
+<body>
+  <header class="header">
+    <div class="container">
+      <h1>Coming Soon</h1>
+      <nav>
+        <ul>
+          <li><a href="../index.html">Home</a></li>
+          <li><a href="../pages/about.html">About</a></li>
+          <li><a href="../pages/contact.html">Contact</a></li>
+          <li><a href="soon.html" class="active">Coming Soon</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <section class="soon-section">
+      <h2>We’re Launching Something Amazing!</h2>
+      <p>Stay tuned. Our new feature will be available soon.</p>
+      <div class="countdown">
+        <div class="countdown-item">
+          <span id="days">00</span>
+          <p>Days</p>
+        </div>
+        <div class="countdown-item">
+          <span id="hours">00</span>
+          <p>Hours</p>
+        </div>
+        <div class="countdown-item">
+          <span id="minutes">00</span>
+          <p>Minutes</p>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2024 kg07nurislam. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Countdown Timer
+    const launchDate = new Date("Jan , 2025 23:59:59").getTime();
+
+    const countdown = setInterval(() => {
+      const now = new Date().getTime();
+      const timeLeft = launchDate - now;
+
+      const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+
+      document.getElementById("days").innerText = days;
+      document.getElementById("hours").innerText = hours;
+      document.getElementById("minutes").innerText = minutes;
+
+      if (timeLeft < 0) {
+        clearInterval(countdown);
+        document.querySelector(".countdown").innerHTML = "<p>We're Live!</p>";
+      }
+    }, 1000);
+  </script>
+</body>
+
+</html>
