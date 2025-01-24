@@ -44,7 +44,7 @@ nav ul {
   transition: visibility 0s, opacity 0.3s ease;
 }
 
-nav ul a {
+nav ul li {
   text-decoration: none;
   color: #fff;
   font-size: 16px;
@@ -54,15 +54,17 @@ nav ul a {
   cursor: pointer;
 }
 
-nav ul a li {
+nav ul li {
   display: flex;
   flex-direction: column;
+  transition: box-shadow 1s ease, border-radius 1s ease;
 }
 
-nav ul a:hover li {
-  background-color: #444;
+nav ul li:hover {
+  background-color: #0ab;
   padding: 5px;
-  border-radius: 5px;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 1);
 }
 
 .site-title {
@@ -76,4 +78,24 @@ nav ul a:hover li {
   z-index: 2;
   color: #fff;
   /* Көрүнүп турушу үчүн */
+}
+
+.page {
+  display: none;
+}
+
+#home {
+  display: block;
+}
+
+.header {
+  width: 100%;
+  padding: 15px 0 15px 0;
+  text-align: center;
+  font-size: 22px;
+  background: #BBBBBB;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5),
+    inset 0 1px 5px rgba(0, 0, 0, 0.5);
+  font-weight: bold;
+  color: rgba(0, 170, 187, 1);
 }
