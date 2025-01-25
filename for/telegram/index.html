@@ -4,8 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>kg07nurislam</title>
+  <title>Башкы бет</title>
   <link rel="stylesheet" href="general-ftg.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 </head>
 
 <body>
@@ -13,8 +14,16 @@
   <!-- home -->
   <section class="page home" id="home">
     <header class="home-header header">
-      Башкы 
+      Башкы
     </header>
+    <div class="greeting-container">
+      <h3>
+        Салам, <br /> <span id="user-name">Конок!</span>
+      </h3>
+      <h2>
+        Биздин мини тиркемебизге кош келиңиз!
+      </h2>
+    </div>
   </section>
 
   <!-- store -->
@@ -29,6 +38,18 @@
     <header class="infoner-header header">
       Infoner
     </header>
+
+    <div class="video-wrapper">
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/yZDcZ__d18E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+        </iframe>
+      </div>
+      <div class="video-info">
+        <p class="video-title">Blockchain иштөөсү</p>
+        <sub class="video-subtitle">Описания</sub>
+        <p class="video-description">Blockchain`дин кантип иштөөсү тууралуу кыскача видео</p>
+      </div>
+    </div>
   </section>
 
   <!-- partners -->
@@ -41,15 +62,30 @@
   <footer class="footer" id="footer">
     <nav>
       <ul>
-        <li class="page-btn" onclick="showPage('home')"><span>🏠</span>Башкы</li>
-        <li class="page-btn" onclick="showPage('store')"><span>🛍️</span>Store</li>
-        <li class="page-btn" onclick="showPage('infoner')"><span>📖</span>Infoner</li>
-        <li class="page-btn" onclick="showPage('partners')"><span>🤝</span>Өнөктөш</li>
+        <li class="page-btn" onclick="showPage('home')"><i class="fa fa-home"></i>Башкы</li>
+        <li class="page-btn" onclick="showPage('store')"><i class="fa fa-shopping-bag"></i>Store</li>
+        <li class="page-btn" onclick="showPage('infoner')"><i class="fa fa-book"></i>Infoner</li>
+        <li class="page-btn" onclick="showPage('partners')"><i class="fa fa-handshake"></i>Өнөктөш</li>
       </ul>
     </nav>
   </footer>
 
+  <div class="big-screen-error-content">
+    <p>Кечиресиз бул мини колдонмо чоң өлчөмдөгү терезелерге ыңгайлаштырылган эмес. Сураныч Смартфон же Планшетте ачыңыз же болбосо Браузер терезесин кичирейтириңиз! Максималдуу узундук 770 пикселдег ашпоосу керек.</p>
+  </div>
+
   <script src="general.ftg.js"></script>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const user = Telegram.WebApp.initDataUnsafe.user;
+      if (user && user.first_name) {
+        document.querySelector(".greeting-container h3").innerHTML = `Салам, <br /> ${user.first_name}!`;
+      } else {
+        document.querySelector(".greeting-container h3").innerHTML = "Салам, <br /> Конок!";
+      }
+    });
+  </script>
 </body>
 
 </html>
