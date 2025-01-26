@@ -79,8 +79,8 @@
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       const user = Telegram.WebApp.initDataUnsafe.user;
-      if (user && user.first_name) {
-        document.querySelector(".greeting-container h3").innerHTML = `Салам, <br /> ${user.first_name}!`;
+      if (user && user.first_name && user.username) {
+        document.querySelector(".greeting-container h3").innerHTML = `Салам, <br /> <a href="t.me/${user.username}">${user.first_name}</a>!`;
       } else {
         document.querySelector(".greeting-container h3").innerHTML = "Салам, <br /> Конок!";
       }
