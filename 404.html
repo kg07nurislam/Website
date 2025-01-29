@@ -5,33 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>404 - Баракча табылган жок</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 50px;
-        }
-        h1 {
-            font-size: 50px;
-            color: red;
-        }
-        p {
-            font-size: 20px;
-        }
-        a {
-            color: blue;
-            text-decoration: none;
-        }
+        body { text-align: center; font-family: Arial, sans-serif; padding: 50px; }
+        h1 { font-size: 50px; color: red; }
+        p { font-size: 20px; }
+        a { color: blue; text-decoration: none; font-size: 18px; }
     </style>
     <script>
-    var path = window.location.pathname;
-    if (path !== "/") {
-        window.location.replace("/#"+path);
-    }
+        // Эгерде GitHub туура эмес баракчаларда башкы бетке багыттаса, URL'ди өзгөртүп 404 баракчаны көрсөтөбүз
+        if (window.location.pathname !== "/404.html") {
+            history.replaceState(null, null, window.location.pathname);
+        }
     </script>
 </head>
 <body>
     <h1>404</h1>
     <p>Кечиресиз, бул баракча табылган жок.</p>
     <a href="/">Башкы бетке кайтуу</a>
+
+    <script>
+  // Эгерде туура эмес баракчага кирсе, 404 баракчага калтырат
+  if (location.pathname !== "/404.html") {
+    window.location.replace("/404.html?redirected=true");
+  }
+    </script>
 </body>
 </html>
