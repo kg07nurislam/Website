@@ -4,11 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>404 - Баракча табылган жок</title>
-    <script>
-        var path = window.location.pathname;
-        if (path !== "/") {
-            window.location.replace("/#"+path);
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
         }
+        h1 {
+            font-size: 50px;
+            color: red;
+        }
+        p {
+            font-size: 20px;
+        }
+        a {
+            color: blue;
+            text-decoration: none;
+        }
+    </style>
+    <script>
+    var path = window.location.pathname;
+    if (path !== "/") {
+        window.location.replace("/#"+path);
+    }
     </script>
 </head>
 <body>
