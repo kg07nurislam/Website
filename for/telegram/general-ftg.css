@@ -5,8 +5,10 @@ html, body {
     padding: 0;
     overflow: hidden;
 }
+
 body {
-  background: #494949;
+  background: rgba(247, 254, 255, 1);
+  padding: 65px 0 10px 0;
 }
 
 /* Навигация */
@@ -22,11 +24,24 @@ footer {
   z-index: 2;
   padding: 0 20px;
   box-sizing: border-box;
-  margin: 0;
-  bottom: 0;
+  bottom: -100px;
   left: 0;
   border-radius: 30px 30px 0 0;
   box-shadow: 0 0 25px rgba(0, 170, 187, 1);
+  cursor: pointer;
+  animation: slideUp 1s linear forwards;
+}
+
+@keyframes slideUp {
+  0% {
+    bottom: -100px;
+    /* Баштапкы абал (экранын сыртында) */
+  }
+
+  100% {
+    bottom: 0;
+    /* Көрүнүктүү абал */
+  }
 }
 
 nav {
@@ -99,14 +114,33 @@ nav ul li:hover {
 
 .header {
   width: 100%;
-  padding: 30px 0 15px 0;
+  max-height: 100px;
+  padding: 15px 0 15px 0;
   text-align: center;
   font-size: 22px;
-  background: #BBBBBB;
-  box-shadow: 0 3px 10px rgba(255, 255, 255, 0.5),
+  background: #0AB;
+  box-shadow: 0 0 25px rgba(0, 170, 187, 1),
     inset 0 1px 5px rgba(0, 0, 0, 0.5);
   font-weight: bold;
-  color: rgba(0, 170, 187, 1);
+  color: rgba(240, 240, 240, 1);
+  border-radius: 0 0 30px 30px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  animation: headerSlideUp 1s linear forwards;
+  top: -100px;
+  position: fixed;
+}
+
+@keyframes headerSlideUp {
+  0% {
+    too: -100px;
+    /* Баштапкы абал (экранын сыртында) */
+  }
+
+  100% {
+    top: 0;
+    /* Көрүнүктүү абал */
+  }
 }
 
 .video-wrapper {
@@ -173,22 +207,27 @@ nav ul li:hover {
   padding: 20px;
 }
 
+.greeting-container h3 {
+  margin-top: 0;
+}
+
 h3 {
   font-size: 28px;
-  color: #ffe;
+  color: rgba(0, 0, 0, 1);
   font-weight: bold;
   line-height: 1.4;
   text-align: left;
 }
 
-h3 span {
-  color: #fff;
+h3 span,
+h3 a {
+  color: rgba(30, 109, 243, 1);
 }
 
 h2 {
   font-size: 22px;
-  color: #eff;
+  color: rgba(0, 0, 0, 1);
   text-align: left;
   margin-top: 0;
   max-width: 300px;
-}
+    }
