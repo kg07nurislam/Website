@@ -1,30 +1,11 @@
-* {
-  cursor: pointer;
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
 }
-
-@media (min-width: 770px) {
-  * {
-    display: none;
-  }
-
-  .big-screen-error-content {
-    display: block;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .big-screen-error-content p {
-    max-width: 500px;
-  }
-}
-
-.big-screen-error-content {
-  display: none;
-}
-
 body {
-  margin: 0;
-  padding: 0;
   background: #494949;
 }
 
