@@ -24,6 +24,11 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 */
 
+//full screen function
+if (window.Telegram && window.Telegram.WebApp) {
+    Telegram.WebApp.expand();
+}
+
 // Категорияларды көрсөтүү үчүн функция
 function showPage(page) {
   const sections = document.querySelectorAll('.page');
