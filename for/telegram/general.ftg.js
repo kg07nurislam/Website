@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 */
 
-//full screen function
+// full screen function
 if (window.Telegram && window.Telegram.WebApp) {
     Telegram.WebApp.expand();
 }
