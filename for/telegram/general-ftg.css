@@ -126,6 +126,7 @@ nav ul li:hover {
   border-radius: 0 0 30px 30px;
   cursor: pointer;
   margin-bottom: 20px;
+  padding-top: 50px;
   animation: headerSlideUp 1s linear forwards;
   top: -100px;
   position: fixed;
