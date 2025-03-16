@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VG App</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+    <h2>VG App - Telegram Web App</h2>
+    <p>Бул тиркеме Telegram'дын ичинде иштейт!</p>
+
+    <button onclick="showUserInfo()">Менин маалыматтарым</button>
+
+    <script>
+        let tg = window.Telegram.WebApp;
+        tg.expand(); // Толук экранга жайылтуу
+
+        function showUserInfo() {
+            alert(`ID: ${tg.initDataUnsafe.user.id}\nАты: ${tg.initDataUnsafe.user.first_name}`);
+        }
+    </script>
+</body>
+</html>
