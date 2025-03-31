@@ -10,29 +10,50 @@
     <ul id="info-list"></ul>
 
     <script>
+        // Браузерди аныктоо
         function getBrowserName() {
             let userAgent = navigator.userAgent;
-            if (userAgent.includes("Chrome") && !userAgent.includes("Edg") && !userAgent.includes("OPR")) {
+            if (userAgent.includes("Edg")) {
+                return "Microsoft Edge";
+            } else if (userAgent.includes("OPR") || userAgent.includes("Opera")) {
+                return "Opera";
+            } else if (userAgent.includes("Chrome") && !userAgent.includes("Edg") && !userAgent.includes("OPR")) {
                 return "Google Chrome";
             } else if (userAgent.includes("Firefox")) {
                 return "Mozilla Firefox";
             } else if (userAgent.includes("Safari") && !userAgent.includes("Chrome")) {
                 return "Safari";
-            } else if (userAgent.includes("Edg")) {
-                return "Microsoft Edge";
-            } else if (userAgent.includes("OPR") || userAgent.includes("Opera")) {
-                return "Opera";
             } else {
                 return "Белгисиз браузер";
             }
         }
 
+        // Операциялык системаны аныктоо
+        function getOS() {
+            let platform = navigator.platform.toLowerCase();
+            if (platform.includes("win")) {
+                return "Windows";
+            } else if (platform.includes("mac")) {
+                return "macOS";
+            } else if (platform.includes("linux")) {
+                return "Linux";
+            } else if (platform.includes("android")) {
+                return "Android";
+            } else if (platform.includes("iphone") || platform.includes("ipad") || platform.includes("ipod")) {
+                return "iOS";
+            } else {
+                return "Белгисиз ОС";
+            }
+        }
+
+        // Негизги маалыматтарды алуу
         function getUserInfo() {
             let info = {
                 "Браузер": getBrowserName(),
                 "Тил": navigator.language,
                 "Экрандын өлчөмү": `${window.screen.width} x ${window.screen.height}`,
-                "Операциялык система": navigator.platform
+                "Операциялык система": getOS(),
+                "Браузердин user-agent": navigator.userAgent
             };
 
             let infoList = document.getElementById("info-list");
@@ -43,6 +64,7 @@
             }
         }
 
+        // IP даректи алуу
         function getIP() {
             fetch("https://api64.ipify.org?format=json")
                 .then(response => response.json())
@@ -54,6 +76,7 @@
                 .catch(error => console.log("IP даректи алуу мүмкүн болгон жок"));
         }
 
+        // Геолокацияны алуу
         function getLocation() {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(position => {
