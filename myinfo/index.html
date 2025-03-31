@@ -12,7 +12,7 @@
     <script>
         function getUserInfo() {
             let info = {
-                "Браузер": navigator.userAgent,
+                "Браузер": navigator.userAgent.split(" ")[0], // Биринчи сөздү алат
                 "Тил": navigator.language,
                 "Экрандын өлчөмү": `${window.screen.width} x ${window.screen.height}`,
                 "Операциялык система": navigator.platform
