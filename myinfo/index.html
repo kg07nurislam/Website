@@ -30,16 +30,16 @@
 
         // Операциялык системаны аныктоо
         function getOS() {
-            let platform = navigator.platform.toLowerCase();
-            if (platform.includes("win")) {
+            let userAgent = navigator.userAgent.toLowerCase();
+            if (userAgent.includes("windows")) {
                 return "Windows";
-            } else if (platform.includes("mac")) {
+            } else if (userAgent.includes("mac")) {
                 return "macOS";
-            } else if (platform.includes("linux")) {
+            } else if (userAgent.includes("linux") && !userAgent.includes("android")) {
                 return "Linux";
-            } else if (platform.includes("android")) {
+            } else if (userAgent.includes("android")) {
                 return "Android";
-            } else if (platform.includes("iphone") || platform.includes("ipad") || platform.includes("ipod")) {
+            } else if (userAgent.includes("iphone") || userAgent.includes("ipad") || userAgent.includes("ipod")) {
                 return "iOS";
             } else {
                 return "Белгисиз ОС";
@@ -52,8 +52,7 @@
                 "Браузер": getBrowserName(),
                 "Тил": navigator.language,
                 "Экрандын өлчөмү": `${window.screen.width} x ${window.screen.height}`,
-                "Операциялык система": getOS(),
-                "Браузердин user-agent": navigator.userAgent
+                "Операциялык система": getOS()
             };
 
             let infoList = document.getElementById("info-list");
@@ -64,37 +63,29 @@
             }
         }
 
-        // IP даректи алуу
-        function getIP() {
-            fetch("https://api64.ipify.org?format=json")
+        // IP дарек жана жайгашкан жерди алуу
+        function getIPandLocation() {
+            fetch("https://ipapi.co/json/")
                 .then(response => response.json())
                 .then(data => {
-                    let li = document.createElement("li");
-                    li.textContent = `IP дарек: ${data.ip}`;
-                    document.getElementById("info-list").appendChild(li);
-                })
-                .catch(error => console.log("IP даректи алуу мүмкүн болгон жок"));
-        }
+                    let info = {
+                        "IP дарек": data.ip,
+                        "Жайгашкан жери": `${data.city}, ${data.region}, ${data.country_name}`
+                    };
 
-        // Геолокацияны алуу
-        function getLocation() {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(position => {
-                    let li = document.createElement("li");
-                    li.textContent = `Геолокация: ${position.coords.latitude}, ${position.coords.longitude}`;
-                    document.getElementById("info-list").appendChild(li);
-                }, () => {
-                    let li = document.createElement("li");
-                    li.textContent = "Геолокация уруксат берилген жок.";
-                    document.getElementById("info-list").appendChild(li);
-                });
-            }
+                    let infoList = document.getElementById("info-list");
+                    for (let key in info) {
+                        let li = document.createElement("li");
+                        li.textContent = `${key}: ${info[key]}`;
+                        infoList.appendChild(li);
+                    }
+                })
+                .catch(error => console.log("IP жана жайгашкан жерди алуу мүмкүн болгон жок"));
         }
 
         // Маалыматтарды алуу
         getUserInfo();
-        getIP();
-        getLocation();
+        getIPandLocation();
     </script>
 </body>
 </html>
