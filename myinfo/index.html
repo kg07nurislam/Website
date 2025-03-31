@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="kg">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Менин маалыматтарым</title>
+</head>
+<body>
+    <h2>Сиз жөнүндө маалыматтар</h2>
+    <ul id="info-list"></ul>
+
+    <script>
+        function getUserInfo() {
+            let info = {
+                "Браузер": navigator.userAgent,
+                "Тил": navigator.language,
+                "Экрандын өлчөмү": `${window.screen.width} x ${window.screen.height}`,
+                "Операциялык система": navigator.platform
+            };
+
+            let infoList = document.getElementById("info-list");
+            for (let key in info) {
+                let li = document.createElement("li");
+                li.textContent = `${key}: ${info[key]}`;
+                infoList.appendChild(li);
+            }
+        }
+
+        function getIP() {
+            fetch("https://api64.ipify.org?format=json")
+                .then(response => response.json())
+                .then(data => {
+                    let li = document.createElement("li");
+                    li.textContent = `IP дарек: ${data.ip}`;
+                    document.getElementById("info-list").appendChild(li);
+                })
+                .catch(error => console.log("IP даректи алуу мүмкүн болгон жок"));
+        }
+
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(position => {
+                    let li = document.createElement("li");
+                    li.textContent = `Геолокация: ${position.coords.latitude}, ${position.coords.longitude}`;
+                    document.getElementById("info-list").appendChild(li);
+                }, () => {
+                    let li = document.createElement("li");
+                    li.textContent = "Геолокация уруксат берилген жок.";
+                    document.getElementById("info-list").appendChild(li);
+                });
+            }
+        }
+
+        // Маалыматтарды алуу
+        getUserInfo();
+        getIP();
+        getLocation();
+    </script>
+</body>
+</html>
