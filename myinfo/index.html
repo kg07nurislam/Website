@@ -1,91 +1,100 @@
 <!DOCTYPE html>
-<html lang="kg">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Менин маалыматтарым</title>
+  <meta http-equiv="content-type" content="charset=UTF-8" />
+  <meta http-equiv="Delegate-CH" content="sec-ch-ua-full-version-list https://cloud.51degrees.com; sec-ch-ua-model https://cloud.51degrees.com; sec-ch-ua-platform https://cloud.51degrees.com; sec-ch-ua-platform-version https://cloud.51degrees.com" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f7fc;
+      margin: 0;
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    
+    #deviceInfo {
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1),
+        inset 0 4px 10px rgba(0, 0, 0, 0.1);
+      padding: 2rem;
+      max-width: 600px;
+      margin: auto;
+    }
+    
+    h1 {
+      text-align: center;
+      font-size: 2rem;
+      color: #2c3e50;
+      margin-bottom: 1rem;
+    }
+    
+    hr {
+      height: 1px;
+      background: #000;
+      border: none;
+    }
+    
+    #deviceInfo p {
+      font-size: 1.1rem;
+      color: #34495e;
+      margin-bottom: 1.2rem;
+      line-height: 1.6;
+      padding-left: 10px;
+    }
+    
+    #deviceInfo p:last-child {
+      margin-bottom: 0;
+    }
+  </style>
 </head>
+
 <body>
-    <h2>Сиз жөнүндө маалыматтар</h2>
-    <ul id="info-list"></ul>
-
-    <script>
-        // Браузерди аныктоо
-        function getBrowserName() {
-            let userAgent = navigator.userAgent;
-            if (userAgent.includes("Edg")) {
-                return "Microsoft Edge";
-            } else if (userAgent.includes("OPR") || userAgent.includes("Opera")) {
-                return "Opera";
-            } else if (userAgent.includes("Chrome") && !userAgent.includes("Edg") && !userAgent.includes("OPR")) {
-                return "Google Chrome";
-            } else if (userAgent.includes("Firefox")) {
-                return "Mozilla Firefox";
-            } else if (userAgent.includes("Safari") && !userAgent.includes("Chrome")) {
-                return "Safari";
-            } else {
-                return "Белгисиз браузер";
-            }
-        }
-
-        // Операциялык системаны аныктоо
-        function getOS() {
-            let userAgent = navigator.userAgent.toLowerCase();
-            if (userAgent.includes("windows")) {
-                return "Windows";
-            } else if (userAgent.includes("mac")) {
-                return "macOS";
-            } else if (userAgent.includes("linux") && !userAgent.includes("android")) {
-                return "Linux";
-            } else if (userAgent.includes("android")) {
-                return "Android";
-            } else if (userAgent.includes("iphone") || userAgent.includes("ipad") || userAgent.includes("ipod")) {
-                return "iOS";
-            } else {
-                return "Белгисиз ОС";
-            }
-        }
-
-        // Негизги маалыматтарды алуу
-        function getUserInfo() {
-            let info = {
-                "Браузер": getBrowserName(),
-                "Тил": navigator.language,
-                "Экрандын өлчөмү": `${window.screen.width} x ${window.screen.height}`,
-                "Операциялык система": getOS()
-            };
-
-            let infoList = document.getElementById("info-list");
-            for (let key in info) {
-                let li = document.createElement("li");
-                li.textContent = `${key}: ${info[key]}`;
-                infoList.appendChild(li);
-            }
-        }
-
-        // IP дарек жана жайгашкан жерди алуу
-        function getIPandLocation() {
-            fetch("https://ipapi.co/json/")
-                .then(response => response.json())
-                .then(data => {
-                    let info = {
-                        "IP дарек": data.ip,
-                        "Жайгашкан жери": `${data.city}, ${data.region}, ${data.country_name}`
-                    };
-
-                    let infoList = document.getElementById("info-list");
-                    for (let key in info) {
-                        let li = document.createElement("li");
-                        li.textContent = `${key}: ${info[key]}`;
-                        infoList.appendChild(li);
-                    }
-                })
-                .catch(error => console.log("IP жана жайгашкан жерди алуу мүмкүн болгон жок"));
-        }
-
-        // Маалыматтарды алуу
-        getUserInfo();
-        getIPandLocation();
-    </script>
+  
+  <div id="deviceInfo">
+    <h1>Түзмөк тууралу маалымат</h1>
+    <hr />
+  </div>
+  <div id="infoContainer"></div>
 </body>
+<script async src="https://cloud.51degrees.com/api/v4/AQQu-9lIGUF5jMZw3Ug.js"></script>
+<script type="text/javascript">
+  window.onload = function() {
+    fod.complete(function(data) {
+      
+      addText("<b>Мобилдик:</b> " + data.device["ismobile"]);
+      
+      addText("<b>Түзмөк камсыздоочу:</b> " + data.device["hardwarevendor"]);
+      
+      addText("<b>Түзмөк модели:</b> " + data.device["hardwaremodel"]);
+      
+      addText("<b>Түзмөктүн аталышы:</b> " + data.device["hardwarename"]);
+      
+      addText("<b>Түзмөк түрү:</b> " + data.device["devicetype"]);
+      
+      addText("<b>Платформа сатуучусу:</b> " + data.device["platformvendor"]);
+      
+      addText("<b>Платформанын аталышы:</b> " + data.device["platformname"]);
+      
+      addText("<b>Платформа версиясы:</b> " + data.device["platformversion"]);
+      
+      addText("<b>Браузер сатуучу:</b> " + data.device["browservendor"]);
+      
+      addText("<b>Браузер аты:</b> " + data.device["browsername"]);
+      
+      addText("<b>Браузер версиясы:</b> " + data.device["browserversion"]);
+      
+      addText("<b>Аппараттык даража:</b> " + data.device["hardwarerank"]);
+    });
+  }
+  
+  addText = function(text) {
+    const deviceInfo = text;
+    document.getElementById("deviceInfo").innerHTML += "<p>" + deviceInfo + "</p>";
+  }
+</script>
+
 </html>
