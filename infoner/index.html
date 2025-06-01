@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ky">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="infoner.css">
+  <title>Infoner</title>
+  
+</head>
+
+<body>
+  <h1 id="page-title">📚 Infoner маалыматтары</h1>
+  <div id="data-container">Жүктөлүүдө...</div>
+  
+  <div id="single-post">
+    <h2 id="single-title">Тема</h2>
+    <p id="single-date">Дата</p>
+    <p id="single-content">Мазмуну...</p>
+    <br>
+    <button class="btn" onclick="goBack()">⬅ Артка кайтуу</button>
+  </div>
+  
+  <script>
+    const apiURL = "https://api.sheety.co/1d026645e5c7d5ee59c3c66286aef3c9/infoner/info";
+    const urlParams = new URLSearchParams(window.location.search);
+    const code = urlParams.get("code");
+    
+    const dataContainer = document.getElementById("data-container");
+    const singlePost = document.getElementById("single-post");
+    const titleEl = document.getElementById("single-title");
+    const dateEl = document.getElementById("single-date");
+    const contentEl = document.getElementById("single-content");
+    const pageTitle = document.getElementById("page-title");
+    
+    fetch(apiURL)
+      .then(response => response.json())
+      .then(data => {
+        const items = data.info;
+        
+        if (code) {
+          // Бир теманы көрсөтүү
+          const selected = items.find(item => item.id == code);
+          if (selected) {
+            dataContainer.style.display = "none";
+            singlePost.style.display = "block";
+            
+            titleEl.innerText = selected.title;
+            dateEl.innerText = "Жарыяланган дата: " + (selected.dateOfPublication || "белгисиз");
+            contentEl.innerText = selected.content || "Мазмун табылган жок.";
+            
+            document.title = selected.title;
+            pageTitle.innerText = selected.title;
+          } else {
+            singlePost.innerHTML = "<p>Тема табылган жок.</p>";
+          }
+        } else {
+          // Бардык темаларды көрсөтүү
+          dataContainer.innerHTML = "";
+          
+          items.forEach(item => {
+            const div = document.createElement("div");
+            div.className = "card";
+            div.innerHTML = `
+              <div class="title">📌 ${item.title}</div>
+              <div class="date">🗓 ${item.dateOfPublication || "белгисиз"}</div>
+              <button class="btn" onclick="window.location.href='?code=${item.id}'">Окуу</button>
+            `;
+            dataContainer.appendChild(div);
+          });
+        }
+      })
+      .catch(error => {
+        dataContainer.innerHTML = "Ката чыкты: " + error.message;
+      });
+    
+    function goBack() {
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+
+</html>
